@@ -44,3 +44,24 @@ def encoder(encoding):
         return wrapper
 
     return func_wrapper
+
+
+def decoder(encoding):
+    """Decorator for a decoder.
+    """
+    def func_wrapper(func):
+        @wraps(func)
+        def wrapper(string, errors="strict"):
+            if errors != "strict":
+                raise UnicodeError(
+                    u"Unsupported error handling: %s" % errors)
+
+            try:
+                return func(string), len(string)
+            except:
+                raise UnicodeDecodeError(
+                    encoding, u"", 0, len(string), "Can't decode string")
+
+        return wrapper
+
+    return func_wrapper
