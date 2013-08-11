@@ -16,3 +16,31 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with fnord.easycodec.  If not, see <http://www.gnu.org/licenses/>.
+
+import sys
+
+if sys.version >= "2.5":
+    from functools import wraps
+else:
+    wraps = lambda func: func
+
+
+def encoder(encoding):
+    """Decorator for an encoder.
+    """
+    def func_wrapper(func):
+        @wraps(func)
+        def wrapper(string, errors="strict"):
+            if errors != "strict":
+                raise UnicodeError(
+                    u"Unsupported error handling: %s" % errors)
+
+            try:
+                return func(string), len(string)
+            except:
+                raise UnicodeEncodeError(
+                    encoding, u"", 0, len(string), "Can't encode string")
+
+        return wrapper
+
+    return func_wrapper
