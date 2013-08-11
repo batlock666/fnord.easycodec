@@ -101,3 +101,24 @@ def CodecRegistration(name, encode, decode,
 
     else:
         return (encode, decode, streamreader, streamwriter)
+
+
+def CodecSearch(name, encode, decode,
+                incrementalencoder=None, incrementaldecoder=None,
+                streamreader=None, streamwriter=None):
+    """Factory for a codec-search.
+    """
+    def my_search(encoding):
+        if encoding == name:
+            return CodecRegistration(
+                name=name,
+                encode=encode,
+                decode=decode,
+                incrementalencoder=incrementalencoder,
+                incrementaldecoder=incrementaldecoder,
+                streamreader=streamreader,
+                streamwriter=streamwriter)
+        else:
+            return None
+
+    return my_search
