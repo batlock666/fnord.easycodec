@@ -1,0 +1,17 @@
+# vim
+*~
+*.swp
+
+# python
+*.py[co]
+
+# package
+build/
+dist/
+*.egg-info/
+
+# buildout
+.installed.cfg
+bin/
+eggs/
+develop-eggs/
