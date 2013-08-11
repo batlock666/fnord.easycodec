@@ -6,9 +6,6 @@ version = '0.1'
 long_description = (
     open('README.txt').read()
     + '\n' +
-    'Contributors\n'
-    '============\n'
-    + '\n' +
     open('CONTRIBUTORS.txt').read()
     + '\n' +
     open('CHANGES.txt').read()
@@ -21,12 +18,16 @@ setup(name='fnord.easycodec',
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Programming Language :: Python",
+          "Programming Language :: Python",
+          "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      keywords='codec',
+      author='Bert Vanderbauwhede',
+      author_email='batlock666@gmail.com',
+      url='https://github.com/batlock666/fnord.easycodec',
       license='lgpl',
       packages=find_packages('src'),
       package_dir = {'': 'src'},
