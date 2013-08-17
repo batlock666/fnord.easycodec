@@ -60,7 +60,7 @@ def decoder(encoding):
                 return func(string), len(string)
             except:
                 raise UnicodeDecodeError(
-                    encoding, u"", 0, len(string), "Can't decode string")
+                    encoding, "", 0, len(string), "Can't decode string")
 
         return wrapper
 
